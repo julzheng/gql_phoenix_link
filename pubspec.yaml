@@ -8,8 +8,8 @@ environment:
 
 dependencies:
   phoenix_socket: ^0.5.3
-  gql_exec: ^0.4.0
-  gql_link: ^0.4.2
+  gql_exec: ^0.4.3
+  gql_link: ^0.5.1
 
 dev_dependencies:
   flutter_lints: ^1.0.4
