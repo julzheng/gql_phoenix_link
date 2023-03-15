@@ -1,6 +1,6 @@
 name: gql_phoenix_link
 description: A graphql link using phoenix sockets
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/knaeckeKami/gql_phoenix_link
 
 environment:

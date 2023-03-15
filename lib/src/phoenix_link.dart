@@ -26,9 +26,22 @@ class PhoenixLink extends Link {
   /// create a new phoenix socket from the given websocketUri,
   /// connect to it, and create a channel, and join it
   static Future<PhoenixChannel> createChannel(
-      {required String websocketUri, Map<String, String>? params}) async {
+      {required String websocketUri,
+      Map<String, String>? params,
+      List<Duration>? reconnectDelays}) async {
     final socket = PhoenixSocket(websocketUri,
-        socketOptions: PhoenixSocketOptions(params: params));
+        socketOptions: PhoenixSocketOptions(
+            params: params,
+            reconnectDelays: reconnectDelays ??
+                const [
+                  Duration.zero,
+                  Duration(milliseconds: 1000),
+                  Duration(milliseconds: 2000),
+                  Duration(milliseconds: 4000),
+                  Duration(milliseconds: 8000),
+                  Duration(milliseconds: 16000),
+                  Duration(milliseconds: 32000),
+                ]));
     await socket.connect();
 
     final channel = socket.addChannel(topic: '__absinthe__:control');
