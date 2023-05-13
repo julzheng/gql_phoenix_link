@@ -92,4 +92,10 @@ class PhoenixLink extends Link {
       }
     }
   }
+
+  @override
+  Future<void> dispose() {
+    channel.close();
+    return super.dispose();
+  }
 }
